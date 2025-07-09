@@ -2783,7 +2783,8 @@ class FERTool:
 1. Open the annotation tool
 2. Change the format from PascalVOC to YOLO
 3. Load your frames directory
-4. Start annotating!
+4. Run batch detection first
+5. Start annotating!
 
 ## Notes
 - The frame extraction script saves frames at 1-second intervals only when there's significant change between frames
