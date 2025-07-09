@@ -2791,5 +2791,18 @@ class FERTool:
 - The threshold value (4 * 1e7) can be adjusted based on your video content
 - Make sure to activate your virtual environment before running the annotation tool
 - The fixes address common issues with resizing and clicking buttons on the canvas due to version conflicts
-
+Hotkeys
+Ctrl + u	Load all of the images from a directory
+Ctrl + r	Change the default annotation target dir
+Ctrl + s	Save
+Ctrl + d	Copy the current label and rect box
+Ctrl + Shift + d	Delete the current image
+Space	Flag the current image as verified
+w	Create a rect box
+d	Next image
+a	Previous image
+del	Delete the selected rect box
+Ctrl++	Zoom in
+Ctrl--	Zoom out
+↑→↓←	Keyboard arrows to move selected rect box
 Good luck with your annotation project!
