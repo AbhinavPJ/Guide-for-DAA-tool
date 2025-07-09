@@ -2732,7 +2732,53 @@ if __name__ == '__main__':
     sys.exit(main())
 
 ```
+change fer_tool.py
+```
+from ultralytics import YOLO
+import fer
+import cv2
+import os
 
+
+class FERTool:
+    def __init__(self, yolo_model_path):
+        self.yolo_model_path = yolo_model_path
+        self.yolo_model = YOLO(self.yolo_model_path)
+
+    def predict(self, image_path, img_size, classification_type=None):
+        # to explicitly save the yolo results to a file, use save=True
+        print('Predicting. Model: ', self.yolo_model_path.split('/')[-1])
+        allowed_classes=[0, 1,2,3]
+        results = self.yolo_model.predict(image_path,classes=allowed_classes)
+        res = results[0]
+        # variable to store the face rectangles to pass to fer model
+        lines = []
+        for i, xywh in enumerate(res.boxes.xywh):
+            label = int(res.boxes.cls[i].item())
+            # if (label != 0):
+            #     continue
+            x, y, w, h = [int(tensor.item()) for tensor in xywh]
+            # show the image and the bounding box predictions using opencv
+            x_center = float(x)/img_size[1]
+            y_center = float(y)/img_size[0]
+            w = float(w)/img_size[1]
+            h = float(h)/img_size[0]
+            x_min = max(float(x_center) - float(w) / 2, 0)
+            x_max = min(float(x_center) + float(w) / 2, 1)
+            y_min = max(float(y_center) - float(h) / 2, 0)
+            y_max = min(float(y_center) + float(h) / 2, 1)
+
+            x_min = round(img_size[1] * x_min)
+            x_max = round(img_size[1] * x_max)
+            y_min = round(img_size[0] * y_min)
+            y_max = round(img_size[0] * y_max)
+
+            points = [(x_min, y_min), (x_max, y_min),
+                        (x_max, y_max), (x_min, y_max)]
+            lines.append((res.names[label], points))
+        return lines
+
+```
 ### 4.2 Configure for YOLO
 1. Open the annotation tool
 2. Change the format from PascalVOC to YOLO
