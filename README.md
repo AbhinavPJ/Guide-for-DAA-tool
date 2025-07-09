@@ -98,6 +98,7 @@ pip install moviepy==1.0.3
 
 ## Step 3: Fix Canvas.py & LabelImg.py Issues
 Replace the files with:
+libs/canvas.py
 ```libs/canvas.py
 
 try:
@@ -848,6 +849,7 @@ class Canvas(QWidget):
     def set_drawing_shape_to_square(self, status):
         self.draw_square = status
 ```
+labelImg.py
 ```labelImg.py
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
