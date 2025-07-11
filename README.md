@@ -2780,11 +2780,13 @@ class FERTool:
 
 ```
 ### 4.2 Configure for YOLO
-1. Open the annotation tool
-2. Change the format from PascalVOC to YOLO
-3. Load your frames directory
-4. Run batch detection first
-5. Start annotating!
+1. To open the annotation tool,run:
+make qt5py3                                         
+python labelImg.py
+3. Change the format from PascalVOC to YOLO
+4. Load your frames directory
+5. Run batch detection first
+6. Start annotating!
 
 ## Notes
 - The frame extraction script saves frames at 1-second intervals only when there's significant change between frames
