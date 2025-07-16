@@ -9,7 +9,7 @@ import cv2
 import os
 import numpy as np
 
-video_path = "Top 20 Movies With The Best Gun Action [Z_2C1FJWfME].f137.mp4"
+video_path = "videoplayback.mp4"
 output_dir = "frames"
 
 if not os.path.exists(output_dir):
